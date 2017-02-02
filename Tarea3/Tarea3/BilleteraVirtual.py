@@ -21,12 +21,12 @@ class BilleteraVirtual(object):
         self.apellidos = apellidos
         self.ci = ci
         self.pin = pin
-        self.saldo = 0
+        self.balance = 0.0
         self.recargas = []
         self.consumos = []
     
-    def saldo(self):
-        return self.saldo
+    def saldo(self) -> float:
+        return self.balance
     
 
     def recargar(self , recarga = False , establecimiento = False):
@@ -37,10 +37,8 @@ class BilleteraVirtual(object):
             raise ValueError('Recarga debe ser positiva')
         
         fecha = dt.now()
-        self.saldo = self.saldo + recarga
-        self.recargas.push((recarga , establecimiento , fecha))
-        
-        print('hacer la recarga')
+        self.balance = self.balance + recarga
+        self.recargas.append((recarga , establecimiento , fecha))
     
     def consumir(self , consumo = False , establecimiento = False , pin = False):
 
@@ -51,11 +49,12 @@ class BilleteraVirtual(object):
             raise ValueError('Pin no valido')
         if(consumo <= 0 ):
             raise ValueError('Consumo debe ser positivo')
-        if (self.saldo - consumo < 0):
+        
+        if ((self.balance - consumo) < 0):
             raise ValueError('Consumo no valido')
         
         fecha = dt.now()
-        self.saldo = self.saldo - consumo
+        self.balance = self.balance - consumo
         self.consumos.append((consumo , establecimiento , fecha ))
     
     
