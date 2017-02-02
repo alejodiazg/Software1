@@ -1,0 +1,6 @@
+#ignore the db
+db.sqlite3
+
+#ignore compiled files
+*.pyc
+*.pyo
