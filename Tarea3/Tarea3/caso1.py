@@ -48,7 +48,7 @@ class Test(unittest.TestCase):
         except ValueError:
             #se hace fallar el codigo para probar si maneja el problema correctamente
             self.failUnlessEqual(self.billetera.saldo(), 300)
-        
+                
         #se verifica otra vez luego de la falla 
         self.failUnlessEqual(self.billetera.saldo(), 300)
         
