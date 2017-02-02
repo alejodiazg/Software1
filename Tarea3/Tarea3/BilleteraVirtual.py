@@ -27,6 +27,7 @@ class BilleteraVirtual(object):
     
     def saldo(self):
         return self.saldo
+    
 
     def recargar(self , recarga = False , establecimiento = False):
         if((not recarga) or (not establecimiento)):
